@@ -14,6 +14,10 @@ class HomeViewModel extends BaseViewModel {
 
   List<ClientTransactions>? clientTransactions = [];
 
+  setup() async {
+    await runBusyFuture(fetchUserTransactions());
+  }
+
   Future fetchUserTransactions() async {
     clientTransactions = await _transactionsService.fetchTransactions();
     notifyListeners();

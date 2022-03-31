@@ -8,7 +8,7 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   device_preview: ^1.0.0
-  dio: ^4.0.5
+  dio: ^4.0.6
   flutter:
     sdk: flutter
   flutter_screenutil: ^5.3.1

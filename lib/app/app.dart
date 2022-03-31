@@ -1,6 +1,8 @@
 import 'package:renmoney_test/services/api/api.dart';
 import 'package:renmoney_test/services/api/api_service.dart';
 import 'package:renmoney_test/services/api/mock_api_service.dart';
+import 'package:renmoney_test/services/local_storage/local_storage.dart';
+import 'package:renmoney_test/services/local_storage/local_storage_service.dart';
 import 'package:renmoney_test/services/transactions/transactions.dart';
 import 'package:renmoney_test/services/transactions/transactions_service.dart';
 import 'package:renmoney_test/ui/views/details/details_view.dart';
@@ -21,11 +23,16 @@ const useMockApiService = false;
   dependencies: [
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: SnackbarService),
-    Singleton(
+    LazySingleton(
       classType: useMockApiService ? MockApiService : ApiService,
       asType: IApi,
     ),
     LazySingleton(classType: TransactionsService, asType: ITransactions),
+    Presolve(
+      classType: LocalStorageService,
+      asType: ILocalStorage,
+      presolveUsing: LocalStorageService.getInstance,
+    )
   ],
 )
 class AppSetup {}

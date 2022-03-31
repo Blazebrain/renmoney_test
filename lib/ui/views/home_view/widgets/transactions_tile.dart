@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renmoney_test/model/client_transactions_model.dart';
 import 'package:renmoney_test/ui/shared/colors.dart';
 import 'package:renmoney_test/ui/shared/dumb_widgets/reusable_svg.dart';
@@ -21,18 +22,18 @@ class TrasactionHistoryTile extends ViewModelWidget<HomeViewModel> {
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        margin: const EdgeInsets.only(bottom: 10),
+        margin: EdgeInsets.only(bottom: 10.h),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
         ),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 10.w),
           color: BrandColors.tileBGColor,
           child: Row(
             children: [
               Container(
-                height: 35,
-                width: 35,
+                height: 35.h,
+                width: 35.w,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -42,7 +43,7 @@ class TrasactionHistoryTile extends ViewModelWidget<HomeViewModel> {
                   svgIcon: viewModel.getTileIcon(model!.type),
                 ),
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: 8.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,16 +52,17 @@ class TrasactionHistoryTile extends ViewModelWidget<HomeViewModel> {
                       model!.comment ?? 'Transfer',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontSize: 13,
-                          height: 1.231,
-                          fontFamily: 'ProductSans'),
+                      style: TextStyle(
+                        fontSize: 13.sp,
+                        height: 1.231,
+                        fontFamily: 'ProductSans',
+                      ),
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8.h),
                     Text(
                       '${model!.entryDate?.split('T')[0]}',
-                      style: const TextStyle(
-                        fontSize: 11,
+                      style: TextStyle(
+                        fontSize: 11.sm,
                         height: 1.182,
                         fontFamily: 'ProductSans',
                       ),
@@ -68,7 +70,7 @@ class TrasactionHistoryTile extends ViewModelWidget<HomeViewModel> {
                   ],
                 ),
               ),
-              const SizedBox(width: 32),
+              SizedBox(width: 32.w),
               Text(
                 '${model!.amount}',
                 style: TextStyle(
@@ -77,7 +79,7 @@ class TrasactionHistoryTile extends ViewModelWidget<HomeViewModel> {
                       : BrandColors.redColor,
                   fontFamily: 'ProductSans',
                   fontWeight: FontWeight.w900,
-                  fontSize: 14,
+                  fontSize: 14.sm,
                 ),
               ),
             ],
